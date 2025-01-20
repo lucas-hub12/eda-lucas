@@ -25,3 +25,6 @@ eda = [
 test = [
     "pytest>=8.3.4",
 ]
+
+[project.scripts]
+eda-lucas = "eda_lucas.cli:group_by_count"
