@@ -2,7 +2,7 @@ from president_speech.db.parquet_interpreter import read_parquet, get_parquet_fu
 import pandas as pd
 import typer
 
-def group_by_count(keyword: str, asc: bool=True, rcnt: int=12):
+def group_by_count(keyword: str, asc: bool=False, rcnt: int=12):
     # todo:ascending, 출력 rows size
     # pytest 코드를 만들어보세요
     # import this <- 해석해보세요
@@ -14,7 +14,7 @@ def group_by_count(keyword: str, asc: bool=True, rcnt: int=12):
     rdf = sdf.head(rcnt)
     return rdf
 
-def print_group_by_count(keyword: str, asc: bool=True, rcnt: int=12):
+def print_group_by_count(keyword: str, asc: bool=False, rcnt: int=12):
     rdf = group_by_count(keyword, asc, rcnt)
     print(rdf.to_string(index=False))
 
