@@ -9,6 +9,8 @@ def test_search_exception():
     assert isinstance(df, pd.DataFrame)
     assert len(df) < row_count
 
+## https://docs.pytest.org/en/stable/
+@pytest.mark.parametrize("p_name, s_count", [(,), (,)])
 def test_정열_및_행수제한():
     # given
     row_count = 3
@@ -20,6 +22,32 @@ def test_정열_및_행수제한():
     # then
     assert isinstance(df, pd.DataFrame)
     assert df.iloc[0]["president"] == "윤보선"
+    assert len(df) == row_count
+
+def test_정열_및_행수제한(a,b):
+    # given
+    row_count = 3
+    is_asc = False
+
+    # when
+    df = group_by_count(keyword="자유", asc=is_asc, rcnt=row_count)
+    
+    # then
+    assert isinstance(df, pd.DataFrame)
+    assert df.iloc[0]["president"] == "박정희"
+    assert len(df) == row_count
+
+def test_정열_및_행수제한():
+    # given
+    row_count = 3
+    is_asc = False
+
+    # when
+    df = group_by_count(keyword="자유", asc=is_asc, rcnt=row_count)
+    
+    # then
+    assert isinstance(df, pd.DataFrame)
+    assert df.iloc[0]["president"] == "박정희"
     assert len(df) == row_count
 
 def test_default_args():
