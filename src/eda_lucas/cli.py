@@ -52,8 +52,13 @@ def print_group_by_count(keyword: str, asc: bool=False, rcnt: int=12, keyword_su
     print(t)
     # print(df.to_string(index=False))
     # print(tabulate(df))
+  
+   # TODO - keyoword_sum 옵션이 활성화되면 keyword_sum 들어가게 하기 
+    import termplotlib as tpl
+    fig = tpl.figure()
+    fig.barh(df['count'], df['president'], force_ascii=True)
+    fig.show()
 
 def entry_point():
     typer.run(print_group_by_count)
-
 

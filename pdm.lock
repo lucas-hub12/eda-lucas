@@ -5,7 +5,7 @@
 groups = ["default", "eda", "jupyterlab", "test"]
 strategy = ["inherit_metadata"]
 lock_version = "4.5.0"
-content_hash = "sha256:f3e2853ae18684dd9ada8f71aa756ecd88f8a7d403f982ee2f1dedb4f5daa402"
+content_hash = "sha256:7cf258256f387722310cf9337c402b790e303a4f75b82b61ae45b8252b5e98fa"
 
 [[metadata.targets]]
 requires_python = ">=3.10"
