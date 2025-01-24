@@ -1,6 +1,8 @@
 from president_speech.db.parquet_interpreter import get_parquet_full_path
 import pandas as pd
 import typer
+from tqdm import tqdm
+import time
 
 def add_keyword_count(df: pd.DataFrame, keyword: str) -> pd.DataFrame:
     """
@@ -32,8 +34,12 @@ def group_by_count(keyword: str, asc: bool=False, rcnt: int=12, keyword_sum: boo
 
 def print_group_by_count(keyword: str, asc: bool=False, rcnt: int=12, keyword_sum: bool=False):
     df = group_by_count(keyword, asc, rcnt, keyword_sum)
-    print(df.to_string(index=False))
+    # 프로그래스바 추가 - df 의 칼럼숫자 * row숫자 + sleep
+    r = len(df.columns)*len(df)
+    for i in tqdm(range(r)):
+        time.sleep(0.5)
 
+    print(df.to_string(index=False))
 
 def entry_point():
     typer.run(print_group_by_count)
