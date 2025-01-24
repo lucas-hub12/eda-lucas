@@ -37,9 +37,21 @@ def print_group_by_count(keyword: str, asc: bool=False, rcnt: int=12, keyword_su
     # 프로그래스바 추가 - df 의 칼럼숫자 * row숫자 + sleep
     r = len(df.columns)*len(df)
     for i in tqdm(range(r)):
-        time.sleep(0.5)
-
-    print(df.to_string(index=False))
+        time.sleep(0.1)
+    
+    from tabulate import tabulate
+    hs = ["president", "count"]
+    if keyword_sum:
+       hs.append('keyword_sum') 
+    t = tabulate(df,headers=hs, tablefmt ='rounded_outline', showindex=False)
+     # t = tabulate(df,headers=["president", "count", "keyword_sum"], tablefmt ='rounded_outline')
+    
+   # else:
+       # t = tabulate(df,headers=["president", "count"], tablefmt ='rounded_outline')
+    
+    print(t)
+    # print(df.to_string(index=False))
+    # print(tabulate(df))
 
 def entry_point():
     typer.run(print_group_by_count)
